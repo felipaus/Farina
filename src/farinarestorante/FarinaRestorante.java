@@ -24,7 +24,7 @@ public class FarinaRestorante {
         Scanner aux = new Scanner(System.in);
         int x = 1;
         while (x != 0) {
-            System.out.println("1-Nuevo Pedido");
+            System.out.println("1-NNuevo Pedido");
             System.out.println("");
             System.out.println("0-finalizar");
             x = aux.nextInt();
