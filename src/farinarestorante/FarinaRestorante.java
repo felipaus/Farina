@@ -6,6 +6,7 @@
 package farinarestorante;
 
 import static com.sun.glass.ui.Cursor.setVisible;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -23,12 +24,21 @@ public class FarinaRestorante {
 
         Scanner aux = new Scanner(System.in);
         int x = 1;
+        int cant[] = new int[50];
+        for (int i = 0; i < 50; i++) {
+            cant[i] = 0;
+        }
         while (x != 0) {
-            System.out.println("1-NNuevo Pedido");
-            System.out.println("");
-            System.out.println("0-finalizar");
-            x = aux.nextInt();
             int cerar = 50;
+            for (int i = 0; i < cerar; i++) {
+                System.out.println();
+            }
+            System.out.println("------Menu Principal-----");
+            System.out.println("1-Nuevo Pedido");
+            System.out.println("2-Acotar Stock");
+            System.out.println("0-Finalizar");
+            x = aux.nextInt();
+
             float pre = 100.0F;
             for (int i = 0; i < cerar; i++) {
                 System.out.println();
@@ -38,17 +48,21 @@ public class FarinaRestorante {
                     p = new Pedido();
                     int j = 2;
                     while (j != 0) {
-                        System.out.println("1-pastas");
-                        System.out.println("2-paninis");
-                        System.out.println("3-piadinas");
-                        System.out.println("4-pizza y calzoni");
-                        System.out.println("5-empanadas");
-                        System.out.println("6-tartas");
-                        System.out.println("7-ensaladas");
-                        System.out.println("8-bebidas");
-                        System.out.println("9-Modifciar pedido");
-                        System.out.println("10-imprimir pedido");
-                        System.out.println("0-terminar pedido");
+                        for (int i = 0; i < cerar; i++) {
+                            System.out.println();
+                        }
+                        System.out.println("------carga de pedido------ ");
+                        System.out.println("1-Pastas");
+                        System.out.println("2-Paninis");
+                        System.out.println("3-Piadinas");
+                        System.out.println("4-Pizza y calzoni");
+                        System.out.println("5-Empanadas");
+                        System.out.println("6-Tartas");
+                        System.out.println("7-Ensaladas");
+                        System.out.println("8-Bebidas");
+                        System.out.println("9-Modifciar Pedido");
+                        System.out.println("10-Imprimir Pedido");
+                        System.out.println("0-Terminar pedido");
                         j = aux.nextInt();
                         for (int i = 0; i < cerar; i++) {
                             System.out.println();
@@ -56,11 +70,11 @@ public class FarinaRestorante {
                         switch (j) {
                             case 1: {
                                 System.out.println("-----------PASTAS---------");
-                                System.out.println("1-canelones");
-                                System.out.println("2-lasagna");
-                                System.out.println("3-farinata");
-                                System.out.println("4-malfatti");
-                                System.out.println("5-ñoquis");
+                                System.out.println("1-Canelones de jamon y queso (porciones " + (30 - cant[1]) + ") , verduras (porciones " + (30 - cant[2]) + ")");
+                                System.out.println("2-Lasagna de jamon y queso (pociones " + (30 - cant[3]) + ") , verdura (porciones " + (30 - cant[4]) + ")");
+                                System.out.println("3-Farinata de jamon y quseo (pociones " + (30 - cant[5]) + ") , verdura (pociones " + (30 - cant[7]) + "), hongos(pociones " + (30 - cant[8]) + ")");
+                                System.out.println("4-malfatti ricota y espinaca (pociones " + (30 - cant[9]) + ")");
+                                System.out.println("5-ñoquis de papa (pociones " + (30 - cant[10]) + ") , calabaza (pociones " + (30 - cant[11]) + ") , rucula y napolitana (pociones " + (30 - cant[12]) + ")");
                                 System.out.println("6-tagliatelle");
                                 System.out.println("7-spaghetti");
                                 System.out.println("8-fusilli");
@@ -70,6 +84,7 @@ public class FarinaRestorante {
                                 }
                                 switch (k) {
                                     case 1: {
+                                        System.out.println("------Relleno de Cnelones-----");
                                         System.out.println("1-jamon y queso");
                                         System.out.println("2-verduras");
                                         int l = aux.nextInt();
@@ -78,18 +93,25 @@ public class FarinaRestorante {
                                         }
                                         switch (l) {
                                             case 1: {
-                                                String s = salsas();
-                                                pre = 100.0F;
-                                                pastas pas = new pastas("canelon de jamon y queso", pre, s);
-                                                p.set_comida(pas);
+                                                if (cant[1] < 30) {
+                                                    String s = salsas();
+                                                    pre = 100.0F;
+                                                    pastas pas = new pastas("canelon de jamon y queso", pre, s);
+                                                    p.set_comida(pas);
+                                                     
+                                                }
+                                               
                                                 break;
                                             }
                                             case 2: {
-                                                String s = salsas();
-                                                pre = 100.0F;
-                                                pastas pas = new pastas("canelon de verduras", pre, s);
-                                                p.set_comida(pas);
-
+                                                if (cant[2] < 30) {
+                                                    String s = salsas();
+                                                    pre = 100.0F;
+                                                    pastas pas = new pastas("canelon de verduras", pre, s);
+                                                    p.set_comida(pas);
+                                                    cant[2]++;
+                                                    
+                                                }
                                                 break;
                                             }
 
@@ -578,15 +600,27 @@ public class FarinaRestorante {
 
                                 Tiket TK = new Tiket();
                                 TK.setVisible(true);
+                                for (int i = 0; i < cerar; i++) {
+                                    System.out.println();
+                                }
+                                for (int i = 0; i < cerar; i++) {
+                                    System.out.println();
+                                }
 
                                 break;
                             }
                         }
                     }
+                    break;
+                }
+                case 2: {
+                   
+                    }
+                    break;
                 }
             }
         }
-    }
+    
 
     public static String salsas() {
         Scanner aux = new Scanner(System.in);
@@ -598,10 +632,13 @@ public class FarinaRestorante {
         System.out.println("5-4 quesos");
         System.out.println("6-champignons");
         System.out.println("7-mediteranea");
+        System.out.println("8-Blanca");
+        System.out.println("9-rosa");
+        System.out.println("10-Frutti mare");
+        System.out.println("11-Otras");
+
         int m = aux.nextInt();
-        for (int i = 0; i < 50; i++) {
-            System.out.println();
-        }
+   
         switch (m) {
             case 1: {
                 return "fileto";
@@ -624,6 +661,21 @@ public class FarinaRestorante {
             case 7: {
                 return "mediteranea";
             }
+            case 8: {
+                return "Blanca";
+            }
+            case 9: {
+                return "rosa";
+            }
+            case 10: {
+                return "Frutti mare";
+            }
+            case 11: {
+                return "Otras";
+            }
+        }
+         for (int i = 0; i < 50; i++) {
+            System.out.println();
         }
         return null;
     }
